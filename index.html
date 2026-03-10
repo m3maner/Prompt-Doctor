@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Doctor - AI-Powered Prompt Analyzer & Optimizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-stethoscope"></i>
+                <span>Prompt Doctor</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#readymade" class="nav-link">Ready-Made</a></li>
+                <li><a href="#templates" class="nav-link">Templates</a></li>
+                <li><a href="#learn" class="nav-link">Learn</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="hero-title">Transform Your Prompts with AI</h1>
+            <p class="hero-subtitle">Analyze, optimize, and perfect your AI prompts in seconds</p>
+        </div>
+    </section>
+
+    <!-- Main Analyzer Section -->
+    <section class="analyzer-section">
+        <div class="container">
+            <div class="analyzer-card">
+                <h2>Analyze Your Prompt</h2>
+                <textarea id="promptInput" placeholder="Paste your prompt here..."></textarea>
+                <button id="analyzeBtn" class="btn-primary">
+                    <i class="fas fa-magic"></i> Analyze Prompt
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section hidden">
+                <div class="scores-grid">
+                    <div class="score-card">
+                        <div class="score-icon"><i class="fas fa-star"></i></div>
+                        <div class="score-value" id="overallScore">0</div>
+                        <div class="score-label">Overall Score</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-icon"><i class="fas fa-eye"></i></div>
+                        <div class="score-value" id="clarityScore">0</div>
+                        <div class="score-label">Clarity</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="score-value" id="creativityScore">0</div>
+                        <div class="score-label">Creativity</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-icon"><i class="fas fa-robot"></i></div>
+                        <div class="score-value" id="aiScore">0</div>
+                        <div class="score-label">AI Compatibility</div>
+                    </div>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Issues Found</h3>
+                        <ul id="issuesList"></ul>
+                    </div>
+                    <div class="analysis-card">
+                        <h3><i class="fas fa-check-circle"></i> Suggestions</h3>
+                        <ul id="suggestionsList"></ul>
+                    </div>
+                </div>
+
+                <!-- Smart Optimization Assistant -->
+                <div class="optimization-assistant">
+                    <h3><i class="fas fa-brain"></i> Smart Prompt Optimization Assistant</h3>
+                    <p class="assistant-subtitle">Choose how you want to optimize your prompt</p>
+                    <div class="optimization-options">
+                        <button class="opt-btn" data-type="detailed">
+                            <i class="fas fa-list-ul"></i> More Detailed
+                        </button>
+                        <button class="opt-btn" data-type="creative">
+                            <i class="fas fa-palette"></i> More Creative
+                        </button>
+                        <button class="opt-btn" data-type="ai">
+                            <i class="fas fa-robot"></i> AI Optimized
+                        </button>
+                        <button class="opt-btn" data-type="professional">
+                            <i class="fas fa-briefcase"></i> Professional
+                        </button>
+                    </div>
+                    <div id="optimizedVersions" class="optimized-versions"></div>
+                </div>
+
+                <div class="improved-prompt-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wand-magic-sparkles"></i> Improved Prompt</h3>
+                        <button id="copyBtn" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div id="improvedPrompt" class="improved-text"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="saveBtn" class="btn-secondary">
+                        <i class="fas fa-save"></i> Save to Dashboard
+                    </button>
+                    <button id="shareBtn" class="btn-secondary">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready-Made Prompts Section -->
+    <section id="readymade" class="readymade-section">
+        <div class="container">
+            <h2 class="section-title">Ready-Made Prompts</h2>
+            <p class="section-subtitle">📋 Copy and use these professional prompts instantly</p>
+            
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="content">Content</button>
+                <button class="filter-btn" data-category="coding">Coding</button>
+                <button class="filter-btn" data-category="business">Business</button>
+                <button class="filter-btn" data-category="creative">Creative</button>
+                <button class="filter-btn" data-category="education">Education</button>
+            </div>
+            
+            <div class="readymade-grid" id="readymadeGrid"></div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section id="templates" class="templates-section">
+        <div class="container">
+            <h2 class="section-title">Prompt Templates Library</h2>
+            <div class="templates-grid" id="templatesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Learn Section -->
+    <section id="learn" class="learn-section">
+        <div class="container">
+            <h2 class="section-title">Learn Prompt Engineering</h2>
+            <div class="learn-grid" id="learnGrid"></div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2 class="section-title">Your Dashboard</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPrompts">0</div>
+                    <div class="stat-label">Prompts Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgScore">0</div>
+                    <div class="stat-label">Average Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="savedPrompts">0</div>
+                    <div class="stat-label">Saved Prompts</div>
+                </div>
+            </div>
+            <div id="promptHistory" class="prompt-history"></div>
+        </div>
+    </section>
+
+    <!-- AI Chat Assistant -->
+    <div id="chatAssistant" class="chat-assistant">
+        <div class="chat-header">
+            <i class="fas fa-comments"></i> AI Assistant
+            <button id="toggleChat" class="chat-toggle"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" placeholder="Ask me anything about prompts...">
+            <button id="sendChat"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button id="openChat" class="chat-fab">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
